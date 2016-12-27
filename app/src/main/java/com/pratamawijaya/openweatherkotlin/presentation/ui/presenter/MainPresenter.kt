@@ -1,8 +1,10 @@
 package com.pratamawijaya.openweatherkotlin.presentation.ui.presenter
 
 import android.util.Log
+import com.pratamawijaya.openweatherkotlin.data.Request
+import com.pratamawijaya.openweatherkotlin.data.feature.forecast.WeatherRepositoryImpl
+import com.pratamawijaya.openweatherkotlin.domain.repository.WeatherRepository
 import com.pratamawijaya.openweatherkotlin.presentation.base.BasePresenter
-import com.pratamawijaya.openweatherkotlin.presentation.data.Request
 import com.pratamawijaya.openweatherkotlin.presentation.ui.MainView
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -13,10 +15,12 @@ import org.jetbrains.anko.uiThread
  * Project Name : OpenWeatherKotlin
  */
 class MainPresenter : BasePresenter<MainView>() {
+  private var repository: WeatherRepository
   private var request: Request
 
   init {
     request = Request()
+    repository = WeatherRepositoryImpl()
   }
 
   override fun attachView(view: MainView) {
@@ -33,7 +37,7 @@ class MainPresenter : BasePresenter<MainView>() {
 //    async
     doAsync {
       getView().showLoading()
-      val stringJson = Request().run("https://jsonplaceholder.typicode.com/users")
+      var stringJson = repository.getForecast()
       uiThread {
         getView().hideLoading()
         Log.d("result", stringJson)

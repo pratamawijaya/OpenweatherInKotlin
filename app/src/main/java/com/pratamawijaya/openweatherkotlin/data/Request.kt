@@ -1,4 +1,4 @@
-package com.pratamawijaya.openweatherkotlin.presentation.data
+package com.pratamawijaya.openweatherkotlin.data
 
 import java.net.URL
 
