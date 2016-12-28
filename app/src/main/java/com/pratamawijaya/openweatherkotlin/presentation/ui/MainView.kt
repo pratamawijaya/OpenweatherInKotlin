@@ -1,5 +1,6 @@
 package com.pratamawijaya.openweatherkotlin.presentation.ui
 
+import com.pratamawijaya.openweatherkotlin.data.Forecast
 import com.pratamawijaya.openweatherkotlin.presentation.base.BaseView
 
 /**
@@ -8,4 +9,5 @@ import com.pratamawijaya.openweatherkotlin.presentation.base.BaseView
  * Project Name : OpenWeatherKotlin
  */
 interface MainView : BaseView {
+  fun setData(forecasts: List<Forecast>)
 }

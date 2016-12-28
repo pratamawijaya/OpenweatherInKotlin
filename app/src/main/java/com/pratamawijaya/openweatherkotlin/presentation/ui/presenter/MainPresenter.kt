@@ -38,10 +38,14 @@ class MainPresenter : BasePresenter<MainView>() {
 //    async
     doAsync {
       getView().showLoading()
-      var stringJson = repository.getForecast("Yogyakarta", BuildConfig.API_KEY)
+      var forecasts = repository.getForecast("Yogyakarta", BuildConfig.API_KEY)
       uiThread {
         getView().hideLoading()
-        Log.d("result", stringJson)
+        getView().setData(forecasts)
+
+        for (d in forecasts) {
+          Log.d("data", "time " + d.dt_txt + " , " + d.weather.get(0).description)
+        }
       }
     }
 

@@ -1,6 +1,9 @@
 package com.pratamawijaya.openweatherkotlin.data.feature.forecast
 
 import android.util.Log
+import com.google.gson.Gson
+import com.pratamawijaya.openweatherkotlin.data.Forecast
+import com.pratamawijaya.openweatherkotlin.data.ForecastResponse
 import com.pratamawijaya.openweatherkotlin.data.Request
 import com.pratamawijaya.openweatherkotlin.domain.repository.WeatherRepository
 
@@ -11,10 +14,15 @@ import com.pratamawijaya.openweatherkotlin.domain.repository.WeatherRepository
  */
 class WeatherRepositoryImpl : WeatherRepository {
 
-  override fun getForecast(cityName: String, apiKey: String): String {
-    var url = "http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&mode=json&appid=${apiKey}"
+  override fun getForecast(cityName: String, apiKey: String): List<Forecast> {
+    var url = "http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&mode=json&appid=${apiKey}&units=metric"
     Log.d("url", "request : " + url)
-    return Request().run(url)
+
+    val responseJson = Request().run(url)
+
+    var forecastObj = Gson().fromJson(responseJson, ForecastResponse::class.java)
+
+    return forecastObj.list
   }
 
 }
