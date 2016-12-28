@@ -48,6 +48,11 @@ class MainActivity : AppCompatActivity(), MainView {
     pbMain.visibility = GONE
   }
 
+  override fun onStop() {
+    super.onStop()
+    presenter.detachView()
+  }
+
   override fun showMessage(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
   }
