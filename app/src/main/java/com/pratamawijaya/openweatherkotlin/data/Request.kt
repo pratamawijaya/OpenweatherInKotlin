@@ -8,9 +8,5 @@ import java.net.URL
  * Project Name : OpenWeatherKotlin
  */
 class Request {
-
-  fun run(url: String): String {
-    val requestData = URL(url).readText()
-    return requestData
-  }
+  fun run(url: String): String = URL(url).readText()
 }
