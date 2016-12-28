@@ -10,7 +10,9 @@ import com.pratamawijaya.openweatherkotlin.domain.repository.WeatherRepository
  */
 class WeatherRepositoryImpl : WeatherRepository {
 
-  override fun getForecast(): String {
-    return Request().run("https://jsonplaceholder.typicode.com/users")
+  override fun getForecast(cityName: String, apiKey: String): String {
+    var url = "http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&mode=json&appid=${apiKey}"
+    return Request().run(url)
   }
+
 }

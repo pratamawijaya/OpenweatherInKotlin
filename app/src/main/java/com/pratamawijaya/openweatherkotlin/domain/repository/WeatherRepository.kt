@@ -6,5 +6,5 @@ package com.pratamawijaya.openweatherkotlin.domain.repository
  * Project Name : OpenWeatherKotlin
  */
 interface WeatherRepository {
-  fun getForecast(): String
+  fun getForecast(cityName: String, apiKey: String): String
 }

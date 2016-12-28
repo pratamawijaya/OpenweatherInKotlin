@@ -1,6 +1,7 @@
 package com.pratamawijaya.openweatherkotlin.presentation.ui.presenter
 
 import android.util.Log
+import com.pratamawijaya.openweatherkotlin.BuildConfig
 import com.pratamawijaya.openweatherkotlin.data.Request
 import com.pratamawijaya.openweatherkotlin.data.feature.forecast.WeatherRepositoryImpl
 import com.pratamawijaya.openweatherkotlin.domain.repository.WeatherRepository
@@ -37,7 +38,7 @@ class MainPresenter : BasePresenter<MainView>() {
 //    async
     doAsync {
       getView().showLoading()
-      var stringJson = repository.getForecast()
+      var stringJson = repository.getForecast("Yogyakarta", BuildConfig.API_KEY)
       uiThread {
         getView().hideLoading()
         Log.d("result", stringJson)
