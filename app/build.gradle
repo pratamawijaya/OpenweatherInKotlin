@@ -46,7 +46,5 @@ dependencies {
   compile 'com.android.support:design:25.1.0'
   compile 'org.jetbrains.anko:anko-sdk15:0.9'
   compile 'com.google.code.gson:gson:2.8.0'
-}
-repositories {
-  mavenCentral()
+  compile 'com.squareup.picasso:picasso:2.5.2'
 }
