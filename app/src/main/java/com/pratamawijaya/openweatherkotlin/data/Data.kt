@@ -8,6 +8,8 @@ package com.pratamawijaya.openweatherkotlin.data
 
 data class ForecastResponse(val city: City, val list: List<Forecast>)
 
+data class WeatherResponse(val id: Int, val name: String, val cod: Int, val coord: Coordinate, val weather: List<Weather>, val main: Temperature, val dt: Long)
+
 data class Forecast(val dt: Long, val main: Temperature, val weather: List<Weather>, val dt_txt: String)
 
 data class City(val id: Long, val name: String, val country: String, val population: Long, val coord: Coordinate)

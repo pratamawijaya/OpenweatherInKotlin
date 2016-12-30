@@ -32,6 +32,16 @@ class MainPresenter : BasePresenter<MainView>() {
     super.detachView()
   }
 
+  fun getCurrentWeather() {
+    doAsync {
+      var weather = repository.getCurrentWeather("Yogyakarta", BuildConfig.API_KEY)
+      uiThread {
+        Log.d("weather", weather.name)
+        Log.d("weather", weather.main.temp.toString())
+      }
+    }
+  }
+
   fun getDataWeather() {
     getView().showMessage("Get Weather")
 

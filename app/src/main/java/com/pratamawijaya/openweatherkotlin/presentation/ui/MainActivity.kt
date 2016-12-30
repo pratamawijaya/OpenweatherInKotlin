@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity(), MainView {
     presenter = MainPresenter()
     presenter.attachView(this)
     presenter.getDataWeather()
+    presenter.getCurrentWeather()
 
     setupRecyclerView()
   }
